@@ -145,12 +145,7 @@ AUTH_USER_MODEL = 'accounts.User'
 
 # CORS Settings
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:5173",
-    "https://70950519cf46.ngrok-free.app",  
-    "ethonos-task-frontend-6qr1l1r43.vercel.app"
+    '*'
 ]
 
 CORS_ALLOW_CREDENTIALS = True
