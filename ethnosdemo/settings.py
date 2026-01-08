@@ -27,7 +27,13 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-ie_-htp)bz+lnml=#h(r4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+# Parse ALLOWED_HOSTS from environment variable or use defaults
+allowed_hosts_str = config('ALLOWED_HOSTS', default='localhost,127.0.0.1')
+ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_str.split(',') if host.strip()]
+
+# If RENDER environment variable is set, allow all Render domains
+if config('RENDER', default=False, cast=bool):
+    ALLOWED_HOSTS.append('.onrender.com')
 
 
 # Application definition
